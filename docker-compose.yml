@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  vault:
+    image: hashicorp/vault:latest
+    ports:
+      - "8200:8200"
+    restart: always
+    volumes:
+      - ./vault_config:/vault/config
+      - ~/.vault-data:/vault/data
+    command:
+      - "server"
+    cap_add:
+      - "IPC_LOCK"
